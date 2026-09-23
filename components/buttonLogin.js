@@ -1,14 +1,14 @@
 "use client";
 import Link from "next/link";
 
-const ButtonLogin = ({ registered, children, etcls }) => {
+const ButtonLogin = ({ session, etcls, children }) => {
   const base = "btn btn-primary";
   const cls = etcls ? `${base} + ${etcls}` : base;
 
   return (
     <div>
       <Link href="/dashboard" className={cls}>
-        {registered ? children : "Compte"}
+        {session ? `Bienvenue ${session.user.name || "à toi"}` : "Compte"}
       </Link>
     </div>
   );

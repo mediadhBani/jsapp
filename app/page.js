@@ -2,8 +2,12 @@ import ButtonLogin from "@/components/buttonLogin";
 import Faq from "@/components/faq";
 import Image from "next/image";
 import productDemo from "./productDemo.jpeg";
+import { auth } from "@/auth";
 
-export default function Home() {
+
+export default async function Home() {
+  const session = await auth();
+  console.log(session)
   return (
     <main>
       <header className="bg-base-200">
@@ -39,7 +43,7 @@ export default function Home() {
             garder ton énérgie pour les choses qui comptent.
           </div>
 
-          <ButtonLogin registered={true}>Let's go!</ButtonLogin>
+          <ButtonLogin session={session}>Let's go!</ButtonLogin>
         </div>
       </section>
 
@@ -84,7 +88,7 @@ export default function Home() {
               ))}
             </ul>
 
-            <ButtonLogin etcls="w-full" />
+            <ButtonLogin session={session} etcls="w-full" />
           </div>
         </div>
       </section>
