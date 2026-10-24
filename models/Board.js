@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
 const boardSchema = new mongoose.Schema({
-  UserId: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "User",
   },
   name: {
     type: String,
-    required: True,
+    required: true,
     trim: true,
   },
 });
