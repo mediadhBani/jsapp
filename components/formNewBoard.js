@@ -1,22 +1,24 @@
 "use client";
 
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const FormNewBoard = () => {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (loading) return;
-
     setLoading(true);
+
     try {
       const data = await axios.post("api/board", { name });
-      console.log(data);
       setName("");
+      router.refresh();
     } catch (err) {
     } finally {
       setLoading(false);
