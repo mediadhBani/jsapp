@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const FormNewBoard = () => {
   const [name, setName] = useState("");
@@ -19,7 +20,11 @@ const FormNewBoard = () => {
       const data = await axios.post("api/board", { name });
       setName("");
       router.refresh();
-    } catch (err) {
+      toast.success("Board created!");
+    } catch (error) {
+      const msg =
+        error.response.data.error || error.message || "Something went wrong.";
+      toast.error(msg);
     } finally {
       setLoading(false);
     }
