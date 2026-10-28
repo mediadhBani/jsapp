@@ -23,7 +23,7 @@ const FormNewBoard = () => {
       toast.success("Board created!");
     } catch (error) {
       const msg =
-        error.response.data.error || error.message || "Something went wrong.";
+        error.response?.data?.error || error.message || "Something went wrong.";
       toast.error(msg);
     } finally {
       setLoading(false);
