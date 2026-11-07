@@ -5,6 +5,7 @@ import connectMongo from "@/libs/mongoose";
 import User from "@/models/User";
 import { auth } from "@/auth";
 import Board from "@/models/Board";
+import Link from "next/link";
 
 async function getUser() {
   const session = await auth();
@@ -33,9 +34,14 @@ export default async function Dashboard() {
 
           <ul className="space-y-4">
             {user.boards.map((board) => (
-              <div key={board._id} className="bg-base-100 p-6 rounded-3xl">
-                {board.name}
-              </div>
+              <li class="w-full" key={board._id}>
+                <Link
+                  href={`/dashboard/b/${board._id}`}
+                  className="bg-base-100 p-6 rounded-3xl block w-full hover:bg-neutral hover:text-neutral-content duration-100"
+                >
+                  {board.name}
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
