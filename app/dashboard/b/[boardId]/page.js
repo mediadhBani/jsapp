@@ -4,6 +4,7 @@ import Board from "@/models/Board";
 import CardBoardLink from "@/components/cardBoardLink";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
+import ButtonDeleteBoard from "@/components/buttonDeleteBoard";
 
 const getBoard = async (id) => {
   const session = await auth();
@@ -45,7 +46,8 @@ export default async function FeedbackBoard({ params }) {
 
       <section className="max-w-5xl mx-auto px-5 py-12 space-y-12">
         <h1 className="font-extrabold text-xl mb-4">{board.name}</h1>
-        <CardBoardLink boardId={board._id} />
+        <CardBoardLink boardId={board._id.toString()} />
+        <ButtonDeleteBoard boardId={board._id.toString()} />
       </section>
     </main>
   );
