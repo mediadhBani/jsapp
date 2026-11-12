@@ -34,7 +34,7 @@ export default async function Dashboard() {
 
           <ul className="space-y-4">
             {user.boards.map((board) => (
-              <li class="w-full" key={board._id}>
+              <li className="w-full" key={board._id}>
                 <Link
                   href={`/dashboard/b/${board._id}`}
                   className="bg-base-100 p-6 rounded-3xl block w-full hover:bg-neutral hover:text-neutral-content duration-100"
