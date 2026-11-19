@@ -7,6 +7,7 @@ import { auth } from "@/auth";
 import Board from "@/models/Board";
 import Link from "next/link";
 import ButtonCheckout from "@/components/buttonCheckout";
+import ButtonPortal from "@/components/buttonPortal";
 
 async function getUser() {
   const session = await auth();
@@ -22,7 +23,7 @@ export default async function Dashboard() {
       {/* <h1>Dashboard de mon appli</h1>*/}
       <header className="bg-base-100">
         <div className="max-w-5xl mx-auto px-5 py-3 flex justify-between">
-          {!user.hasAccess && <ButtonCheckout />}
+          {user.hasAccess ? <ButtonPortal /> : <ButtonCheckout />}
           <ButtonLogout />
         </div>
       </header>
